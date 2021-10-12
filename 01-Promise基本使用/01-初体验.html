@@ -43,18 +43,18 @@
             setTimeout(() => {
                 let n = rand(1, 100)
                 if (n <= 30) {
-                    resolve() // 将 Promise 对象的状态设置为【成功】
+                    resolve(n) // 将 Promise 对象的状态设置为【成功】
                 } else {
-                    reject() // 将 Promise 对象的状态设置为【失败】
+                    reject(n) // 将 Promise 对象的状态设置为【失败】
                 }
             }, 1000)
         })
 
         // 调用 then 方法
-        p.then(() => {
-            alert('恭喜中奖，您的中奖数字为 xxx')
-        }, () => {
-            alert('再接再厉，您的号码为 xxx')
+        p.then((value) => {
+            alert('恭喜中奖，您的中奖数字为 ' + value)
+        }, (reason) => {
+            alert('再接再厉，您的号码为 ' + reason)
         })
     })
 
